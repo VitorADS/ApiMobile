@@ -1,18 +1,18 @@
-name: Example
-
 on:
   push:
     branches: 
       - main
+name: Api Mobile
 jobs:
-  Make:
+  web-deploy:
     runs-on: ubuntu-latest
-    name: Make ${{matrix.work}} ${{matrix.arch}}
+    name: Deploy
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-      - name: down
-        uses: MitchWind/ftp-deploy@master
+      - name: get latest code
+        uses: actions/checkout@v2
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
             server: ${{ secrets.ftp_host }}
             username: ${{ secrets.ftp_user }}
