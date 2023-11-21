@@ -1,0 +1,19 @@
+name: Example
+
+on:
+  push:
+    branches: [ master, Development ]
+jobs:
+  Make:
+    runs-on: ubuntu-latest
+    name: Make ${{matrix.work}} ${{matrix.arch}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: down
+        uses: MitchWind/ftp-deploy@master
+        with:
+            server: ${{ secrets.ftp_host }}
+            username: ${{ secrets.ftp_user }}
+            password: ${{ secrets.ftp_password }}
+            server-dir: apimobile.vitorads.com.br/
