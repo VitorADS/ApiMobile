@@ -7,13 +7,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Here is the deployment action
       - name: Upload from public_html via FTP
-        uses: airvzxf/ftp-deployment-action@latest
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "../apimobile.vitorads.com.br"
-          delete: "false"
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzv0 --delete"
+          SOURCE: "/"
+          REMOTE_HOST: {{ secrets.FTP_HOST }}
+          REMOTE_USER: {{ secrets.FTP_USER }}
+          # REMOTE_PORT: {{ secrets.REMOTE_PORT }}
+          TARGET: {{ secrets.REMOTE_TARGET }}
+
+        # with:
+        #   server: ${{ secrets.FTP_HOST }}
+        #   user: ${{ secrets.FTP_USER }}
+        #   password: ${{ secrets.FTP_PASSWORD }}
+        #   local_dir: "../apimobile.vitorads.com.br"
+        #   delete: "false"
