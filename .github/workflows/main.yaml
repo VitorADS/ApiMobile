@@ -15,10 +15,10 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rltgoDzv0 --delete"
           SOURCE: "/"
-          REMOTE_HOST: {{ secrets.FTP_HOST }}
-          REMOTE_USER: {{ secrets.FTP_USER }}
+          REMOTE_HOST: ${{ secrets.FTP_HOST }}
+          REMOTE_USER: ${{ secrets.FTP_USER }}
           # REMOTE_PORT: {{ secrets.REMOTE_PORT }}
-          TARGET: {{ secrets.REMOTE_TARGET }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
 
         # with:
         #   server: ${{ secrets.FTP_HOST }}
