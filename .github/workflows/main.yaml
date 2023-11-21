@@ -2,7 +2,8 @@ name: Example
 
 on:
   push:
-    branches: [ master, Development ]
+    branches: 
+      - main
 jobs:
   Make:
     runs-on: ubuntu-latest
