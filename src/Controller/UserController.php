@@ -48,7 +48,7 @@ class UserController extends AbstractController
 
         if(count($errosForm) > 0){
             foreach($errosForm as $error){
-                $erro[] = $error['message'];
+                $erro[] = $error->getMessage();
             }
         } else {
             $erro = 'Nao foi possivel gravar a informacao';
