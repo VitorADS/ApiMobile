@@ -41,6 +41,7 @@ class UserController extends AbstractController
                 $this->userPasswordHasher->hashPassword($user, $userForm->get('password')->getData())
             );
             $user = $this->userService->save($user);
+            $user = $this->serializer->serialize($user, 'json');
             return $this->json($user, 201);
         }
 
