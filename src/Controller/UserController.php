@@ -47,7 +47,9 @@ class UserController extends AbstractController
         $errosForm = $userForm->getErrors(true);
 
         if(count($errosForm) > 0){
-            $erro = (string) $errosForm;
+            foreach($errosForm as $error){
+                $erro[] = $error;
+            }
         } else {
             $erro = 'Nao foi possivel gravar a informacao';
         }
