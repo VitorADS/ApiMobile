@@ -31,10 +31,11 @@ class DespesaController extends AbstractController
         $this->serializer = new Serializer($normalizers, $encoders);
     }
 
-    #[Route('/despesas', name: 'app_despesa')]
+    #[Route('/api/despesas', name: 'app_despesa')]
     public function index(): JsonResponse
     {
-        $despesas = $this->despesaService->getRepository()->findAll();
+        $user = $this->getUser();
+        $despesas = $this->despesaService->getRepository()->findBy(['user' => $user]);
         return $this->json($despesas);
     }
 
