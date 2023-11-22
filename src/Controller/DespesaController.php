@@ -60,7 +60,7 @@ class DespesaController extends AbstractController
             $erro = 'Nao foi possivel gravar a informacao';
         }
 
-        return $this->json([$erro]);
+        return $this->json($erro);
     }
 
     #[Route('/api/despesa/{id}', name: 'app_find_despesa', methods: ['GET'])]

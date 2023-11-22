@@ -52,6 +52,6 @@ class UserController extends AbstractController
             $erro = 'Nao foi possivel gravar a informacao';
         }
 
-        return $this->json([$erro]);
+        return $this->json($erro);
     }
 }
