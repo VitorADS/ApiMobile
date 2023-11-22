@@ -29,7 +29,7 @@ class UserController extends AbstractController
         $this->serializer = new Serializer($normalizers, $encoders);
     }
 
-    #[Route('/api/register', name: 'app_register_user')]
+    #[Route('/register', name: 'app_register_user')]
     public function index(Request $request): JsonResponse
     {
         $user = new User();
