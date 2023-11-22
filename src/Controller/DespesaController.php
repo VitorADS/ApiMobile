@@ -31,7 +31,7 @@ class DespesaController extends AbstractController
         $this->serializer = new Serializer($normalizers, $encoders);
     }
 
-    #[Route('/api/despesas', name: 'app_despesa')]
+    #[Route('/despesas', name: 'app_despesa')]
     public function index(): JsonResponse
     {
         $despesas = $this->despesaService->getRepository()->findAll();
