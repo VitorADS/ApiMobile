@@ -39,14 +39,6 @@ class UserRegisterType extends AbstractType
                     ])
                 ]
             ])
-            ->add('montante', NumberType::class, [
-                'required' => true,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Digite seu montante inicial'
-                    ])
-                ]
-            ])
         ;
     }
 
