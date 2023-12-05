@@ -31,9 +31,9 @@ class User extends AbstractEntity implements UserInterface, PasswordAuthenticate
     #[Ignore]
     private string $password;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     #[Groups('public')]
-    private float $montante;
+    private ?float $montante = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Despesa::class, orphanRemoval: true)]
     #[Ignore]
