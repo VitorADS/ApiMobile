@@ -35,7 +35,7 @@ class DespesaController extends AbstractController
     public function index(): JsonResponse
     {
         $user = $this->getUser();
-        $despesas = $this->despesaService->getRepository()->findBy(['user' => $user]);
+        $despesas = $this->despesaService->getRepository()->findBy(['user' => $user], ['id' => 'DESC']);
         return $this->json($despesas);
     }
 
