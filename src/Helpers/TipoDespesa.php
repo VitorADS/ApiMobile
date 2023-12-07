@@ -7,8 +7,8 @@ class TipoDespesa
     const DEBITO = 0;
     const CREDITO = 1;
 
-    const DEBITO_STR = 'DEBITO';
-    const CREDITO_STR = 'CREDITO';
+    const DEBITO_STR = 'Débito';
+    const CREDITO_STR = 'Crédito';
 
     public static function getOptions(): array
     {
