@@ -112,10 +112,10 @@ class User extends AbstractEntity implements UserInterface, PasswordAuthenticate
         // $this->plainPassword = null;
     }
 
-    public function getMontante(): ?float
+    public function getMontante(): ?string
     {
         if($this->montante){
-            return (float) number_format($this->montante, 2);
+            return number_format($this->montante, 2);
         }
 
         return $this->montante;
