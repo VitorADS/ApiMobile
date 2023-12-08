@@ -57,7 +57,7 @@ class DespesaController extends AbstractController
         if(count($errosForm) > 0){
             $erro = (string) $errosForm;
         } else {
-            $erro = 'Nao foi possivel gravar a informacao';
+            $erro = 'Nao foi possivel gravar a informacao!';
         }
 
         return $this->json($erro);
