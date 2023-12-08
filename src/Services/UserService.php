@@ -21,10 +21,13 @@ class UserService extends AbstractService
      */
     public function save(AbstractEntity $entity, ?int $id = null): AbstractEntity
     {
-        if($this->getRepository()->findOneBy(['email' => $entity->getEmail()])){
-            throw new Exception('E-mail ja cadastrado!');
-        } else {
-            return parent::save($entity, $id);
+        /** @var User $user */
+        $user = $this->getRepository()->findOneBy(['email' => $entity->getEmail()]);
+
+        if($user instanceof User && ($id === null || $user->getId() !== $id)){
+            throw new Exception('E-mail ja cadastrado!', 400);
         }
+
+        return parent::save($entity, $id);
     }
 }
