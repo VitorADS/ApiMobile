@@ -66,11 +66,11 @@ class DespesaService extends AbstractService
     {
         if($despesa->getTipo() === TipoDespesa::DEBITO_STR){
             $despesa->getUser()->setMontante(
-                $despesa->getUser()->getMontante() - $despesa->getValor()
+                $despesa->getUser()->getMontanteReal() - $despesa->getValorReal()
             );
         } else {
             $despesa->getUser()->setMontante(
-                $despesa->getUser()->getMontante() + $despesa->getValor()
+                $despesa->getUser()->getMontanteReal() + $despesa->getValorReal()
             );
         }
 

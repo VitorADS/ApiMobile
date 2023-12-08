@@ -71,6 +71,11 @@ class Despesa extends AbstractEntity
         return number_format($this->valor, 2);
     }
 
+    public function getValorReal(): float
+    {
+        return $this->valor;
+    }
+
     public function setValor(float $valor): static
     {
         $this->valor = $valor;
