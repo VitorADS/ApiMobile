@@ -25,6 +25,7 @@ class DespesaService extends AbstractService
             $despesa->setValor($entity->valor);
             $despesa->setUser($entity->user);
             $despesa->setDescricao($entity->descricao);
+            $despesa->setData($entity->data);
             $despesa = $this->atualizaMontante($despesa);
 
             return parent::save($despesa, $id);
@@ -43,11 +44,11 @@ class DespesaService extends AbstractService
         try{
             if($entity->getTipo() === TipoDespesa::DEBITO_STR){
                 $user->setMontante(
-                    $user->getMontante() + $entity->getValor()
+                    $user->getMontanteReal() + $entity->getValorReal()
                 );
             } else {
                 $user->setMontante(
-                    $user->getMontante() - $entity->getValor()
+                    $user->getMontanteReal() - $entity->getValorReal()
                 );
             }
 
