@@ -6,8 +6,10 @@ use App\DTO\DespesaDTO;
 use App\Entity\AbstractEntity;
 use App\Entity\Despesa;
 use App\Helpers\TipoDespesa;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class DespesaService extends AbstractService
 {
@@ -25,7 +27,13 @@ class DespesaService extends AbstractService
             $despesa->setValor($entity->valor);
             $despesa->setUser($entity->user);
             $despesa->setDescricao($entity->descricao);
-            $despesa->setData($entity->data);
+
+            if(strlen($entity->data) > 0){
+                $despesa->setData(new DateTime($entity->data));
+            } else {
+                $despesa->setData();
+            }
+
             $despesa = $this->atualizaMontante($despesa);
 
             return parent::save($despesa, $id);

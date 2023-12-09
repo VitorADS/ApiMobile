@@ -15,6 +15,7 @@ class DespesaFormType extends AbstractType
             ->add('tipo')
             ->add('valor')
             ->add('descricao')
+            ->add('data')
         ;
     }
 

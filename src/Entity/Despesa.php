@@ -88,10 +88,9 @@ class Despesa extends AbstractEntity
         return $this->data;
     }
 
-    #[PrePersist]
-    public function setData(): void
+    public function setData(DateTime $data = new DateTime()): void
     {
-        $this->data = new DateTime();
+        $this->data = $data;
     }
 
     // public function getUpdatedAt(): ?DateTime
